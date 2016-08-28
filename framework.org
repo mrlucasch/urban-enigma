@@ -1,0 +1,66 @@
+* Current Status
+** DONE Working on parsing files
+   CLOSED: [2016-08-27 Sat 18:33]
+*** DONE Building tests to see if output is as expected
+    CLOSED: [2016-08-27 Sat 18:05]
+* Experiment Framework
+** Startup
+*** Master
+**** DONE Read Config File
+     CLOSED: [2016-08-27 Sat 18:34]
+**** DONE Indentify Slaves
+     CLOSED: [2016-08-27 Sat 18:34]
+**** TODO Configure Experiments
+**** DONE Make Results Directory
+     CLOSED: [2016-08-27 Sat 19:37]
+**** TODO Copy all scripts to slaves
+**** TODO Collect Machine Configuration Information
+**** TODO Start Slave servers
+*** Slaves
+**** TODO Start REST Server
+**** TODO Wait for commands
+** Setup Environment
+*** TODO Start environment script
+*** TODO Wait for statuses from each slave
+** Verify Environment
+*** TODO Compare Environment against known configuration
+*** TODO Retry if failed
+**** Skip after 3 tries
+** Start Monitor
+*** TODO Run monitor task for each monitor
+** Wait for success status
+*** TODO Wait for success status
+** Start Workload
+*** TODO Run Start command on designated slaves
+** Wait for Completion or status
+*** TODO When FINISH command, proceed
+** Clean up Monitors
+*** TODO Run stop monitor command on slaves
+** Collect Results
+*** TODO Collect result files on slaves
+** Next Experiment
+*** TODO Proceed to next workload
+
+
+
+
+
+
+* Configuration File
+** General Experiment Information
+*** Number of Workloads
+*** Master
+*** Slaves
+*** Top Level Results Directory
+*** Workload Directory
+** Experiment Configuration
+*** Experiment Name
+*** Number of Trials
+*** Workload Script
+*** Workload Result Script
+*** Machines to run workload on (EX: slave1,slave2,slave3)
+*** Time To start (EX: 5 min,START)
+*** Time to run (EX: 5min,END)
+*** Misc Args (EX: "ARG1","ARG2","ARG3","ARG4"
+*** Monitor Scripts (EX: "vmstat 10","monitor.sh","monitor.py")
+*** Monitor Results (EX: "results1","result2.dat","result3.dat")

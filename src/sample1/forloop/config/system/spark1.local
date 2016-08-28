@@ -1,0 +1,211 @@
+Kernel Version
+Linux version 4.4.0-31-generic (buildd@lgw01-16) (gcc version 5.3.1 20160413 (Ubuntu 5.3.1-14ubuntu2.1) ) #50-Ubuntu SMP Wed Jul 13 00:07:12 UTC 2016
+
+
+---
+
+OS RELEASE
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=16.04
+DISTRIB_CODENAME=xenial
+DISTRIB_DESCRIPTION="Ubuntu 16.04.1 LTS"
+NAME="Ubuntu"
+VERSION="16.04.1 LTS (Xenial Xerus)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 16.04.1 LTS"
+VERSION_ID="16.04"
+HOME_URL="http://www.ubuntu.com/"
+SUPPORT_URL="http://help.ubuntu.com/"
+BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
+UBUNTU_CODENAME=xenial
+
+
+---
+
+Block Devices
+NAME                  MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                     8:0    0   30G  0 disk 
+├─sda1                  8:1    0  487M  0 part /boot
+├─sda2                  8:2    0    1K  0 part 
+└─sda5                  8:5    0 29.5G  0 part 
+  ├─spark1--vg-root   252:0    0 21.5G  0 lvm  /
+  └─spark1--vg-swap_1 252:1    0    8G  0 lvm  [SWAP]
+sr0                    11:0    1 1024M  0 rom  
+
+
+---
+
+CPUs 
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 26
+model name	: Intel Core i7 9xx (Nehalem Class Core i7)
+stepping	: 3
+microcode	: 0x1
+cpu MHz		: 2261.020
+cache size	: 4096 KB
+physical id	: 0
+siblings	: 1
+core id		: 0
+cpu cores	: 1
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm constant_tsc nopl pni ssse3 cx16 sse4_1 sse4_2 x2apic popcnt hypervisor lahf_lm
+bugs		:
+bogomips	: 4522.04
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 26
+model name	: Intel Core i7 9xx (Nehalem Class Core i7)
+stepping	: 3
+microcode	: 0x1
+cpu MHz		: 2261.020
+cache size	: 4096 KB
+physical id	: 1
+siblings	: 1
+core id		: 0
+cpu cores	: 1
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm constant_tsc nopl pni ssse3 cx16 sse4_1 sse4_2 x2apic popcnt hypervisor lahf_lm
+bugs		:
+bogomips	: 4522.04
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 26
+model name	: Intel Core i7 9xx (Nehalem Class Core i7)
+stepping	: 3
+microcode	: 0x1
+cpu MHz		: 2261.020
+cache size	: 4096 KB
+physical id	: 2
+siblings	: 1
+core id		: 0
+cpu cores	: 1
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm constant_tsc nopl pni ssse3 cx16 sse4_1 sse4_2 x2apic popcnt hypervisor lahf_lm
+bugs		:
+bogomips	: 4522.04
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 26
+model name	: Intel Core i7 9xx (Nehalem Class Core i7)
+stepping	: 3
+microcode	: 0x1
+cpu MHz		: 2261.020
+cache size	: 4096 KB
+physical id	: 3
+siblings	: 1
+core id		: 0
+cpu cores	: 1
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm constant_tsc nopl pni ssse3 cx16 sse4_1 sse4_2 x2apic popcnt hypervisor lahf_lm
+bugs		:
+bogomips	: 4522.04
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+
+
+---
+
+Memory
+MemTotal:        8175088 kB
+MemFree:         6969664 kB
+MemAvailable:    7790408 kB
+Buffers:           76076 kB
+Cached:           923216 kB
+SwapCached:            0 kB
+Active:           693352 kB
+Inactive:         331724 kB
+Active(anon):      28768 kB
+Inactive(anon):     8428 kB
+Active(file):     664584 kB
+Inactive(file):   323296 kB
+Unevictable:        3660 kB
+Mlocked:            3660 kB
+SwapTotal:       8388604 kB
+SwapFree:        8388604 kB
+Dirty:                 8 kB
+Writeback:             0 kB
+AnonPages:         29452 kB
+Mapped:            29448 kB
+Shmem:              8992 kB
+Slab:             129896 kB
+SReclaimable:     108736 kB
+SUnreclaim:        21160 kB
+KernelStack:        2864 kB
+PageTables:         3080 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    12476148 kB
+Committed_AS:     253176 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:      6144 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:       75644 kB
+DirectMap2M:     8312832 kB
+
+
+---
+
+Memory Max
+H/W path        Device      Class          Description
+======================================================
+/0/0                        memory         96KiB BIOS
+/0/1000                     memory         8GiB System Memory
+/0/1000/0                   memory         8GiB DIMM RAM
+
+
+---
+

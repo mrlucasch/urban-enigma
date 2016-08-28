@@ -1,0 +1,30 @@
+[General]
+workload_num: 2
+results_dir: sample1
+master: spark1.local
+slaves: spark1.local,spark2.local,spark3.local
+workloads: workloads
+username: ubuntu
+key_location: KEY_GOES_HERE
+[Workload1]
+experiment: for_loop
+num_trials: 3
+workload: for_loop.sh
+results_dir: forloop
+machines: spark1.local,spark2.local,spark3.local
+start: START
+finish: END
+args: ""
+monitors: "vmstat 10","free -mh"
+monitor_results: "vmstat.dat","memory.dat"
+[Workload2]
+experiment: while_loop
+num_trials: 3
+workload: while_loop.sh
+results_dir: whileloop
+machines: spark1.local,spark2.local,spark3.local
+start: START
+finish: END
+args: ""
+monitors: "vmstat 10","free -mh"
+monitor_results: "vmstat.dat","memory.dat"

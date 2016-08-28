@@ -1,0 +1,67 @@
+Experiment1/
+├── workloada
+│   ├── config
+│   │   ├── hardware
+│   │   │   ├── master1
+│   │   │   ├── slave1
+│   │   │   ├── slave2
+│   │   │   └── slave3
+│   │   ├── networking
+│   │   │   ├── master1
+│   │   │   ├── slave1
+│   │   │   ├── slave2
+│   │   │   └── slave3
+│   │   └── system
+│   │       ├── master1
+│   │       ├── slave1
+│   │       ├── slave2
+│   │       └── slave3
+│   └── results
+│       ├── monitors
+│       │   ├── slave1
+│       │   │   ├── tcpdump.out
+│       │   │   ├── top.out
+│       │   │   └── vmstat.out
+│       │   ├── slave2
+│       │   │   ├── tcpdump.out
+│       │   │   ├── top.out
+│       │   │   └── vmstat.out 
+│       │   └── slave3
+│       │       ├── tcpdump.out
+│       │       ├── top.out
+│       │       └── vmstat.out
+│       └── workload
+│           └── out
+└── workloadb
+    ├── config
+    │   ├── hardware
+    │   │   ├── master1
+    │   │   ├── slave1
+    │   │   ├── slave2
+    │   │   └── slave3
+    │   ├── networking
+    │   │   ├── master1
+    │   │   ├── slave1
+    │   │   ├── slave2
+    │   │   └── slave3
+    │   └── system
+    │       ├── master1
+    │       ├── slave1
+    │       ├── slave2
+    │       └── slave3
+    └── results
+        ├── monitors
+        │   ├── slave1
+        │   │   ├── tcpdump.out
+        │   │   ├── top.out
+        │   │   └── vmstat.out
+        │   ├── slave2
+        │   │   ├── tcpdump.out
+        │   │   ├── top.out
+        │   │   └── vmstat.out
+        │   └── slave3
+        │       ├── tcpdump.out
+        │       ├── top.out
+        │       └── vmstat.out
+        └── workload
+            └── out
