@@ -11,6 +11,23 @@ from datetime import datetime
 import sys
 #from global_vals import *
 import global_vals
+
+
+def copyFiles():
+    #store username
+    user = global_vals.details["username"]
+    key = global_vals.details["key_location"]
+    #iterate through slaves and copy files
+    for slaves in global_vals.details["slaves"]:
+        #ssh command
+        ssh1 = user+"@"+slaves
+        ssh2 = " -i "+key+" "+ssh1
+        #create new /workloads dir and fix permissions
+        os.system("ssh "+ssh2+" 'sudo mkdir -p /workloads && sudo chown "+user+": /workloads'")
+        #copy files to /workloads
+        os.system("scp -r "+" -i "+key+" "+global_vals.details["workloads"]+" "+ssh1+":/workloads")
+
+
 #function to make a directory. If it exists, append the current time to the name
 # returns a tuple of the form (true | false, new_name)
 # True means operation was a success with provided name

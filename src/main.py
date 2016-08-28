@@ -30,6 +30,9 @@ if __name__ == "__main__":
     #Create filestructure for storing results
     createFileStructure()
 
+    copyFiles()
+
+    
     #Collect the configured information from all the machines
     #collect_config("spark1.local","ubuntu","key","sample1/forloop")
-    collect_info_from_machines(0)
+    #collect_info_from_machines(0)

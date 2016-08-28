@@ -9,19 +9,24 @@
 **** DONE Read Config File
      CLOSED: [2016-08-27 Sat 18:34]
 **** DONE Indentify Slaves
-     CLOSED: [2016-08-27 Sat 18:34]
-**** TODO Configure Experiments
+     CLOSED: [2016-08-28 Sun 00:28]
+**** DONE Configure Experiments
+     CLOSED: [2016-08-28 Sun 00:05]
 **** DONE Make Results Directory
      CLOSED: [2016-08-27 Sat 19:37]
-**** TODO Copy all scripts to slaves
-**** TODO Collect Machine Configuration Information
+**** DONE Copy all scripts to slaves
+     CLOSED: [2016-08-28 Sun 00:27]
+**** DONE Collect Machine Configuration Information
+     CLOSED: [2016-08-28 Sun 00:28]
 **** TODO Start Slave servers
 *** Slaves
 **** TODO Start REST Server
 **** TODO Wait for commands
 ** Setup Environment
-*** TODO Start environment script
-*** TODO Wait for statuses from each slave
+*** DONE Start environment script
+    CLOSED: [2016-08-28 Sun 00:28]
+*** DONE Wait for statuses from each slave
+    CLOSED: [2016-08-28 Sun 00:28]
 ** Verify Environment
 *** TODO Compare Environment against known configuration
 *** TODO Retry if failed

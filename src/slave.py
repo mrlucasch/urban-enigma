@@ -27,16 +27,23 @@ def runMonitor(cmd,processes):
     #return the process list and index
     return (index,processes)
 
-
-def setupEnvironment():
-    cmd = "python environment.py"
+#Function that runs the setup environment script. Wait until completed to continue
+def setupEnvironment(env_script):
+    #create the command
+    cmd = "/workloads/./"+env_script
+    #open process
     p = Popen(cmd , shell=True, stdout=PIPE, stderr=PIPE)
+    #start/read
     out, err = p.communicate()
+    #check for errors, return 1 if errored
     if(p.returncode != 0):
         print "Return code: ", p.returncode
-        print err.rstrip()
-    resultsLine = out.rstrip()
-    return resultsLine
+        return 1
+        #print err.rstrip()
+    #format results
+    #resultsLine = out.rstrip()
+    #return 0 for success
+    return 0
 
 
 
@@ -84,10 +91,19 @@ class Monitor(Resource):
         #check if command was setup. this sets up the environment for things to
         #run
         elif command == "setup":
-            setupEnvironment()
-            return {"status":"configured"}
+            #fetch script to run
+            script = request.json['script_name']
+            #run the set environment script
+            result = setupEnvironment(script)
+            #if zero returned no errors. This does not mean env is correct!
+            if result ==0:
+                return {"status":"configured"}
+            #otherwise we saw an error
+            else:
+                return {"status":"unconfigured"}
 
 
 api.add_resource(Monitor,'/<string:command>','/<int:pid>')
 if __name__ == '__main__':
-    app.run(debug=True)
+    #app.run(debug=True)
+    app.run(host='0.0.0.0')

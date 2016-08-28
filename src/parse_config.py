@@ -16,7 +16,7 @@ config_types = {"workload_num":"int","results_dir":"string","master":"string",\
                 "num_trials":"int","workload":"string",\
                 "monitor_results":"list","machines":"list",\
                 "start":"time","finish":"time","args":"list","monitors":"list",\
-                "username":"string","key_location":"string"}
+                "username":"string","key_location":"string","env_script":"string"}
 
 
 # Function that parses lines that are lists
