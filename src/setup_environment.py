@@ -12,12 +12,11 @@ from subprocess import Popen,PIPE
 import sys
 import os
 
-#store failed items
-failed_keys[key] = expected
+debug = False
 
 ###Runs sysctl and returns the value
 def check_value(key):
-	output = subprocess.check_output("sysctl -n "+key, shell=True)
+	output = subprocess.check_output("sudo sysctl -n "+key, shell=True)
 	return output.replace("\n","")
 
 
@@ -58,12 +57,13 @@ def configure_kernel_options(expected):
         #set value to needed value
         res = set_value(key,expected[key])
         if res == 1:
+            if debug == True:
+                print "Failed at setting value"
             print res
             exit(1)
 
 #function to double check value
 def doublecheck(expected, actual,key):
-	global failed_keys
     #if matches success, return 0
 	if expected == actual:
 		return 0
@@ -81,27 +81,30 @@ def validate(expected):
 			res= validate_list(expected[key],actual,key)
 		else:
             #double check value
-			res = double_check(expected[key],actual,key)
+			res = doublecheck(expected[key],actual,key)
         #if a 1 was returned thats an error. so print and exit
         if res == 1:
+            if debug == True:
+                print "Failed the double check"
             print 1
             exit(1)
 
 ## If a list is returned, this function is called to compare the values regardless of order
 def validate_list(expected,actual,key):
-	global failed_keys
 	expected_list = expected.split(" ")
 	actual_list = actual.split(" ")
 	if set(expected_list) == set(actual_list):
 		return 0
 	else:
-        failed_keys[key] = expected
         return 1
 #store the  config file name
 filename = sys.argv[1]
-
+if len(sys.argv) == 3:
+    debug = True
 #check if file exists
 if not os.path.isfile(filename):
+    if debug == True:
+        print "File not found"
     print 1
     exit(1)
 

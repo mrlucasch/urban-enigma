@@ -138,7 +138,8 @@ class Monitor(Resource):
         elif command == "reset":
             #iterate through processes and kill left overs
             for p in self.processes:
-                p.kill()
+                if p.returncode == None:
+                    p.kill()
             #reset array and indexing
             self.processes = []
             return {"status":"reset"}

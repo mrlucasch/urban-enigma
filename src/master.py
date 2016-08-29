@@ -58,6 +58,12 @@ def checkStatus(host,pid):
     r = requests.get(url, headers=headers)
     print r.content
 
+#Function to reset slaves
+def reset(host):
+    url = "http://"+host+":"+port+"/reset"
+    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+    r = requests.put(url, headers=headers)
+    print r.content
 
 #Function to launch the workload
 def launchWorkload(workload,host,workload_location):
@@ -139,6 +145,14 @@ def setupSlaves(machines,setup_script):
     for hosts in machines:
         runSetup(hosts,setup_script)
 
+
+#Function to reset all slaves
+def resetMonitors(index):
+    for hosts in global_vals.workloads[index]["machines"]:
+            reset(hosts)
+            global_vals.workloads[index]["monitor_processes"][hosts]=[]
+
+
 #Function to kill remaining machines
 def killMonitors(index):
     for hosts in global_vals.workloads[index]["machines"]:
@@ -189,5 +203,6 @@ def master(configFile):
         fetchWorkloadResults(global_vals.details["master"],destination)
         fetchMonitorResults(i)
         #Reset
+        resetMonitors(i)
 
 #test(sys.argv[1:])
