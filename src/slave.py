@@ -7,19 +7,42 @@
 #
 #
 
-from flask import Flask, request
+from flask import Flask, request,send_file
 from flask_restful import Resource, Api
 from subprocess import Popen,PIPE
 
-app = Flask(__name__)
-api = Api(app)
+
+#Function to return a file using scp
+def returnFile(filename,dest):
+    cmd = "scp /workloads/"+filename+" "+dest
+    p = Popen(cmd,shell=True, stdout=PIPE,stderr=PIPE)
+    out, err = p.communicate()
+    if(p.returncode != 0):
+        print "Return code: ", p.returncode
+        print 1
+    resultsLine = out.rstrip()
 
 
+#Function to run the workload
+def runWorkload(script):
+    f = open("/workloads/out","w")
+    p = Popen("bash "+script , shell=True, stdout=PIPE, stderr=PIPE)
+    out, err = p.communicate()
+    if(p.returncode != 0):
+        print "Return code: ", p.returncode
+        f.write(err)
+        print 1
+    resultsLine = out.rstrip()
+
+    f.write(resultsLine)
+    f.close()
+    return 0
 
 
 # Function to run the monitor command
 # Returns a tuple containing the index in processes as well as the lust of ps
 def runMonitor(cmd,processes):
+    print "Now Starting "+cmd
     #record the index for the new process
     index = len(processes)
     #Append the process to the list of processes while running it.
@@ -30,7 +53,7 @@ def runMonitor(cmd,processes):
 #Function that runs the setup environment script. Wait until completed to continue
 def setupEnvironment(env_script):
     #create the command
-    cmd = "/workloads/./"+env_script
+    cmd = "sh "+env_script
     #open process
     p = Popen(cmd , shell=True, stdout=PIPE, stderr=PIPE)
     #start/read
@@ -54,6 +77,9 @@ class Monitor(Resource):
 
     #GET function for rest. Used for checking status of monitor
     def get(self,pid):
+        #check if index is greater than length of array
+        if len(self.processes) <= pid:
+            return {"status":"DNE"}
         #store the status code for processes using poll
         status_code = self.processes[pid].poll()
         #if status_code is none type then still running
@@ -75,13 +101,17 @@ class Monitor(Resource):
             #record the monitor script to run
             script = request.json['script_name']
             #run the monitor script and record the index and process list
-            index,processes = runMonitor(script,self.processes)
+            index,self.processes = runMonitor(script,self.processes)
             #return the pid of the process as well as the index
             return {"pid":self.processes[index].pid,"index":index}
         #check if the command was kill
         elif command == "kill":
             #record the given index
-            index = request.json['index']
+            index = int(request.json['index'])
+            #check if index is greater than length of array
+            if len(self.processes) <= int(index):
+
+                return {"status":"DNE"}
             # store the process
             p = self.processes[index]
             # kill the process
@@ -101,9 +131,27 @@ class Monitor(Resource):
             #otherwise we saw an error
             else:
                 return {"status":"unconfigured"}
+        elif command == "start":
+            script = request.json['script_name']
+            status = runWorkload(script)
+            return {"status":status}
+        elif command == "reset":
+            #iterate through processes and kill left overs
+            for p in self.processes:
+                p.kill()
+            #reset array and indexing
+            self.processes = []
+            return {"status":"reset"}
+        elif command == "fetch":
+            filename = request.json['filename']
+            destination = request.json['destination']
+            returnFile(filename,destination)
+            return {"status":"sent"}
+            #app.send_static_file(filename)
 
-
-api.add_resource(Monitor,'/<string:command>','/<int:pid>')
-if __name__ == '__main__':
+def slave():
     #app.run(debug=True)
+    app = Flask(__name__)
+    api = Api(app)
+    api.add_resource(Monitor,'/<string:command>','/<int:pid>')
     app.run(host='0.0.0.0')

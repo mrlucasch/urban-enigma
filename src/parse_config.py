@@ -23,6 +23,8 @@ config_types = {"workload_num":"int","results_dir":"string","master":"string",\
 # returns a list
 def parseList(line):
     new_list = line.split(",")
+    for index in range(0,len(new_list)):
+        new_list[index] = new_list[index].replace("\"","")
     return new_list
 
 #Function that parses lines that are time
@@ -85,5 +87,7 @@ def parseFile(configFile):
                 workloads[index][options] = parseInt(temp_line)
             elif config_types[options] == "list":
                 workloads[index][options] = parseList(temp_line)
+        for i in range(0,len(workloads)):
+            workloads[i]["monitor_processes"] = {}
         index += 1
     return experiment_details,workloads

@@ -5,7 +5,7 @@ master: spark1.local
 slaves: spark1.local,spark2.local,spark3.local
 workloads: workloads
 username: ubuntu
-key_location: KEY_GOES_HERE
+key_location: /Users/lucasch/.ssh/azure
 [Workload1]
 experiment: for_loop
 num_trials: 3
@@ -15,6 +15,7 @@ machines: spark1.local,spark2.local,spark3.local
 start: START
 finish: END
 args: ""
+env_script: configure_for_loop.sh
 monitors: "vmstat 10","free -mh"
 monitor_results: "vmstat.dat","memory.dat"
 [Workload2]
@@ -26,5 +27,6 @@ machines: spark1.local,spark2.local,spark3.local
 start: START
 finish: END
 args: ""
+env_script: configure_while_loop.sh
 monitors: "vmstat 10","free -mh"
 monitor_results: "vmstat.dat","memory.dat"

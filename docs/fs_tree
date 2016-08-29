@@ -25,7 +25,7 @@ Experiment1/
 │       │   ├── slave2
 │       │   │   ├── tcpdump.out
 │       │   │   ├── top.out
-│       │   │   └── vmstat.out 
+│       │   │   └── vmstat.out
 │       │   └── slave3
 │       │       ├── tcpdump.out
 │       │       ├── top.out

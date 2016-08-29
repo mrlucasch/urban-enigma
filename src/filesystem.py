@@ -25,7 +25,7 @@ def copyFiles():
         #create new /workloads dir and fix permissions
         os.system("ssh "+ssh2+" 'sudo mkdir -p /workloads && sudo chown "+user+": /workloads'")
         #copy files to /workloads
-        os.system("scp -r "+" -i "+key+" "+global_vals.details["workloads"]+" "+ssh1+":/workloads")
+        os.system("scp -r "+" -i "+key+" "+global_vals.details["workloads"]+" "+ssh1+":/workloads/")
 
 
 #function to make a directory. If it exists, append the current time to the name
@@ -58,6 +58,8 @@ def mkdir(dir_name):
 
 # Function to set up file structure for experiments
 def createFileStructure():
+
+    
 
     #Create the top level directory for results
     success,res = mkdir(global_vals.details["results_dir"])
