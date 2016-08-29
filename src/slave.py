@@ -46,7 +46,7 @@ def runMonitor(cmd,processes):
     #record the index for the new process
     index = len(processes)
     #Append the process to the list of processes while running it.
-    processes.append(Popen(cmd , shell=True, stdout=PIPE, stderr=PIPE))
+    processes.append(Popen("exec "+cmd , shell=True, stdout=PIPE, stderr=PIPE))
     #return the process list and index
     return (index,processes)
 
