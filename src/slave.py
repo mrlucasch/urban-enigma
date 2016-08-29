@@ -53,7 +53,7 @@ def runMonitor(cmd,processes):
 #Function that runs the setup environment script. Wait until completed to continue
 def setupEnvironment(env_script):
     #create the command
-    cmd = "sh "+env_script
+    cmd = "bash "+env_script
     #open process
     p = Popen(cmd , shell=True, stdout=PIPE, stderr=PIPE)
     #start/read
